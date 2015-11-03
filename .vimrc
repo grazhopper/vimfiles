@@ -34,34 +34,34 @@ filetype plugin indent on    " required
 " General settings
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set hidden
-set history=1000	
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set number 		" show numbers
-set scrolloff=3 	" Minimal number of lines to keep above/below cursor
-set secure			" disable unsafe commands in local .vimrc files
+set history=1000    
+set ruler       " show the cursor position all the time
+set showcmd     " display incomplete commands
+set number      " show numbers
+set scrolloff=3     " Minimal number of lines to keep above/below cursor
+set secure          " disable unsafe commands in local .vimrc files
 
-set incsearch		" do incremental searching
+set incsearch       " do incremental searching
 set hlsearch        " highlight search matches
 set ignorecase
 set smartcase       " Do case sensitive search if capital characters are present
 
 
-set cursorline 	 " Indicate location of cursor with line
+set cursorline   " Indicate location of cursor with line
 
 set grepprg=grep\ -nH\ $*
-set autoindent		" always set autoindenting on
+set autoindent      " always set autoindenting on
 
 set shiftwidth=4 tabstop=4 softtabstop=4
 
-set lazyredraw 		" to check in combinatie met utl
+set lazyredraw      " to check in combinatie met utl
 "set splitbelow      " Do not set this, minibufexpl ends up at the bottom ;)
 
 "set titlestring=%f title    " Display filename in terminal window
 
 set autowrite
 
-set showmatch 		" Briefly highlight the matching bracket when closing
+set showmatch       " Briefly highlight the matching bracket when closing
 
 
 set listchars=tab:▸\ ,eol:¬,trail:⋅ "Show tabs, eol and spaces when 'list' option is set
@@ -103,7 +103,7 @@ com! -nargs=0 Src :so ~/.vimrc
 " My version
 "set statusline=%<%n:%f%h%3*%m%0*%r%h%w\ %y\ %{fugitive#statusline()}%=\ \ %-30.(line:\ %l\ of\ %L,\ col:\ %c%V\%)\ %3p%%\ (%{&ff})
 
-set laststatus=2 	" always show statusline
+set laststatus=2    " always show statusline
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax highlighting and color schemes
@@ -117,9 +117,9 @@ endif
 if has("gui_running")
 "    colorscheme navajo
 
-	let g:inkpot_black_background=1
-	colorscheme inkpot
-	set guifont=Bitstream\ Vera\ Sans\ Mono\ 8
+    let g:inkpot_black_background=1
+    colorscheme inkpot
+    set guifont=Bitstream\ Vera\ Sans\ Mono\ 8
 else
 " 256 colors color scheme!!
 " colorscheme inkpot
@@ -127,14 +127,14 @@ else
 " set background=light
     set t_Co=256
 
-"	let g:molokai_original=1
-"	colorscheme molokai
+"   let g:molokai_original=1
+"   colorscheme molokai
 
-	let g:inkpot_black_background=1
+    let g:inkpot_black_background=1
     colorscheme inkpot
 
-	let g:zenburn_high_Contrast=1
-"	colorscheme zenburn
+    let g:zenburn_high_Contrast=1
+"   colorscheme zenburn
 endif
 
 
@@ -252,10 +252,10 @@ set completeopt=menuone,menu,longest
 " """"""""""""""""""""""""""""""""""""""""""""""""""
 " " Minibuf
 " """"""""""""""""""""""""""""""""""""""""""""""""""
-" let g:miniBufExplTabWrap = 1			" make tabs show complete (not broken on two lines)
-let g:miniBufExplMapWindowNavVim = 1	" enable window movement with
- 										"<C-vimkeys> (=[hjkl]). This is a lot
- 										"faster than '<C-W> vimkey'
+" let g:miniBufExplTabWrap = 1          " make tabs show complete (not broken on two lines)
+let g:miniBufExplMapWindowNavVim = 1    " enable window movement with
+                                        "<C-vimkeys> (=[hjkl]). This is a lot
+                                        "faster than '<C-W> vimkey'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Matchit
@@ -279,10 +279,10 @@ let g:SuperTabLeadingSpaceCompletion = 0 " do not complete leading whitespace
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " [ http://stackoverflow.com/questions/510503/ctrlspace-for-omni-and-keyword-completion-in-vim ]
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-		\ "\<lt>C-n>\<lt>Down>" :
-	\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-	\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-	\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+        \ "\<lt>C-n>\<lt>Down>" :
+    \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+    \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+    \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -447,7 +447,7 @@ nnoremap <silent> <Leader>l
       \ endif<CR>
 
 " Maps for highlighting of cursorline
-"nnoremap <Leader>c :set cursorline! <CR>	" toggle cursorline highlighting
+"nnoremap <Leader>c :set cursorline! <CR>   " toggle cursorline highlighting
 " Only show cursorline in current buffer
 "autocmd WinEnter * setlocal cursorline 
 "autocmd WinLeave * setlocal nocursorline
@@ -489,3 +489,5 @@ function! HighlightRepeats() range
 endfunction
 
 command! -range=% HighlightRepeats <line1>,<line2>call HighlightRepeats()
+
+" vim: expandtab
