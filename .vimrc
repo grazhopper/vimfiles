@@ -18,6 +18,12 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'grazhopper/inkpot'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
+Plugin 'mhinz/vim-signify'
+"Plugin 'justinmk/vim-sneak'
+"Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
+" TOCHECK: https://github.com/terryma/vim-multiple-cursors
+Plugin 'easymotion/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -159,6 +165,11 @@ autocmd BufRead,BufNewFile *.pyf set filetype=fortran
 augroup filetypedetect
     au! BufRead,BufNewFile *.mac      setfiletype maxima
 augroup END
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <C-n> :NERDTree<CR>
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""
 " " a.vim [http://www.vim.org/scripts/script.php?script_id=31]
@@ -356,14 +367,35 @@ function! AutoHighlightToggle()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Easy-motion
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+" nmap s <Plug>(easymotion-s)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-s2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map ,j <Plug>(easymotion-j)
+map ,k <Plug>(easymotion-k)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Misc keyboard mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Prevent Q keypress to enter Ex mode. Use Q, e.g., for formatting
 "unmap Q
 
 " Move between buffers
-nmap <C-N> :bn <CR> 
-nmap <C-P> :bp <CR>
+nmap <PageUp> :bn <CR> 
+nmap <PageDown> :bp <CR>
 
 " Spell check
 nmap <F8> :setlocal spell!<CR>
