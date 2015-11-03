@@ -186,9 +186,9 @@ nmap <C-n> :NERDTree<CR>
 " FSwitch (alternative to a.vim)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Switch using <M-o> (only works in gvim)
-nmap <silent> <M-o> :FSHere<cr>
+"nmap <silent> <M-o> :FSHere<cr>
 " Make <M-o> also work in console vim
-map o :FSHere<CR>
+" map o :FSHere<CR>
 
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""
