@@ -1,5 +1,5 @@
 "Profile VIM startup [http://www.vim.org/scripts/script.php?script_id=2915]
-" let g:startup_profile_csv = "/home/yves/vim_startup_profile_log.csv" 
+" let g:startup_profile_csv = "/home/yves/vim_startup_profile_log.csv"
 " runtime macros/startup_profile.vim
 
 " This must be first, because it changes other options as a side effect.
@@ -16,9 +16,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'grazhopper/inkpot'
-Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mhinz/vim-signify'
+Plugin 'bling/vim-airline'
 "Plugin 'justinmk/vim-sneak'
 "Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
@@ -34,7 +34,7 @@ filetype plugin indent on    " required
 " General settings
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set hidden
-set history=1000    
+set history=1000
 set ruler       " show the cursor position all the time
 set showcmd     " display incomplete commands
 set number      " show numbers
@@ -49,6 +49,10 @@ set smartcase       " Do case sensitive search if capital characters are present
 
 set cursorline   " Indicate location of cursor with line
 
+set ttyfast
+
+set showmode
+
 set grepprg=grep\ -nH\ $*
 set autoindent      " always set autoindenting on
 
@@ -61,8 +65,11 @@ set lazyredraw      " to check in combinatie met utl
 
 set autowrite
 
+set timeoutlen=500
+
 set showmatch       " Briefly highlight the matching bracket when closing
 
+set gdefault
 
 set listchars=tab:▸\ ,eol:¬,trail:⋅ "Show tabs, eol and spaces when 'list' option is set
 "set listchars=tab:>-,eol:$,trail:.,extends:#
@@ -90,7 +97,7 @@ com! -nargs=0 Src :so ~/.vimrc
 "set statusline=%F%m%r%h%w\ [TYPE=%Y]\ %{fugitive#statusline()}\ \ \ \ \ \ \ \ [POS=%2l,%2v][%p%%]\ \ \ \ \ \ \ [LEN=%L]
 
 "\\ Wannes:
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " [http://vim.wikia.com/wiki/Writing_a_valid_statusline]:
 "set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%d/%m/%Y-%H:%M\")}%=\ col:%c%V\ ascii:%b\ pos:%o\ lin:%l\,%L\ %P
@@ -233,7 +240,7 @@ let OmniCpp_NamespaceSearch = 1 " do not search in included files
 """ let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 """ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 """ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-" automatically open and close the popup menu / preview window 
+" automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 inoremap <c-n> <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>c-n>\<lt>Down>"<CR>
@@ -261,7 +268,12 @@ let g:miniBufExplMapWindowNavVim = 1    " enable window movement with
 "" Matchit
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "let b:match_ignorecase = 1
-"
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Airline
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Supertab
@@ -294,7 +306,7 @@ imap <C-@> <C-Space>
 """ map <Leader>aj :AlignJustify<CR> \\
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" SnipMate 
+" SnipMate
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:snips_author = 'Yves Frederix'
 let g:snips_mail = 'Yves.Frederix@gmail.com'
@@ -319,7 +331,7 @@ let g:snips_mail = 'Yves.Frederix@gmail.com'
 " let g:disable_protodef_sorting = '1'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Delimitmate 
+" Delimitmate
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let delimitMate_autoclose = 1
 let delimitMate_expand_space = 1
@@ -394,7 +406,7 @@ map ,k <Plug>(easymotion-k)
 "unmap Q
 
 " Move between buffers
-nmap <PageUp> :bn <CR> 
+nmap <PageUp> :bn <CR>
 nmap <PageDown> :bp <CR>
 
 " Spell check
@@ -402,7 +414,7 @@ nmap <F8> :setlocal spell!<CR>
 
 " Change menu colors + add keys for insert-mode completion
 "highlight   Pmenu               term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=Black guibg=White
-"highlight   PmenuSel            term=NONE cterm=NONE ctermfg=7 ctermbg=5 gui=NONE guifg=White guibg=Magenta 
+"highlight   PmenuSel            term=NONE cterm=NONE ctermfg=7 ctermbg=5 gui=NONE guifg=White guibg=Magenta
 "inoremap <C-j> <Down>
 "inoremap <C-k> <Up>
 
@@ -449,7 +461,7 @@ nnoremap <silent> <Leader>l
 " Maps for highlighting of cursorline
 "nnoremap <Leader>c :set cursorline! <CR>   " toggle cursorline highlighting
 " Only show cursorline in current buffer
-"autocmd WinEnter * setlocal cursorline 
+"autocmd WinEnter * setlocal cursorline
 "autocmd WinLeave * setlocal nocursorline
 " Remove cursorline when entering insert mode
 "autocmd InsertEnter * setlocal nocursorline
@@ -467,7 +479,7 @@ map <silent> <C-F2> :if &guioptions =~# 'T' <Bar>
                     \else <Bar>
                          \set guioptions+=T <Bar>
                          \set guioptions+=m <Bar>
-                    \endif<CR> 
+                    \endif<CR>
 
 " For when you forget to sudo.. Really Write the file.
 cmap w!! w !sudo tee % >/dev/null
@@ -489,5 +501,8 @@ function! HighlightRepeats() range
 endfunction
 
 command! -range=% HighlightRepeats <line1>,<line2>call HighlightRepeats()
+
+" Cleanup trailing whitespace
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " vim: expandtab
