@@ -388,7 +388,23 @@ Plug 'jamessan/vim-gnupg'
 Plug 'moll/vim-bbye'
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] } "{{{
+  let NERDTreeShowHidden=1
+  let NERDTreeQuitOnOpen=0
+  let NERDTreeShowLineNumbers=1
+  let NERDTreeChDirMode=0
+  let NERDTreeShowBookmarks=1
+  let NERDTreeIgnore=['\.git','\.hg']
+  let NERDTreeBookmarksFile=s:get_cache_dir('NERDTreeBookmarks')
+  nnoremap <F2> :NERDTreeToggle<CR>
+  nnoremap <F3> :NERDTreeFind<CR>
+"}}}
+"
+Plug 'mbbill/undotree', {'on': 'UndotreeToggle'} "{{{
+  let g:undotree_WindowLayout=1
+  let g:undotree_SetFocusWhenToggle=1
+  nnoremap <silent> <F5> :UndotreeToggle<CR>
+"}}}
 
 call plug#end()
 
